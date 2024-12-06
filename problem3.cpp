@@ -32,7 +32,6 @@ int main() {
     vector<int> numbers;
     int num;
 
-    // Read input sequence terminated by -1
     while (cin >> num && num != -1) {
         numbers.push_back(num);
     }
@@ -40,9 +39,7 @@ int main() {
     int* arr = &numbers[0];
     int size = numbers.size();
 
-
     cout << "Maximum value: " << findMax(arr, size) << endl;
-
 
     reverseArray(arr, size);
     cout << "Reversed array: ";
@@ -50,7 +47,6 @@ int main() {
         cout << arr[i] << " ";
     }
     cout << endl;
-
 
     cout << "Average: " << calculateAverage(arr, size) << endl;
 
