@@ -1,54 +1,75 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
+
 int findMax(int* arr, int size) {
-    int maxVal = arr[0];
-    for (int i = 1; i < size; ++i) {
-        if (arr[i] > maxVal) {
-            maxVal = arr[i];
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
         }
     }
-    return maxVal;
+    return max;
 }
 
+// Function to reverse the array in place
 void reverseArray(int* arr, int size) {
-    for (int i = 0; i < size / 2; ++i) {
-        int temp = arr[i];
-        arr[i] = arr[size - 1 - i];
-        arr[size - 1 - i] = temp;
+    int temp;
+    for (int i = 0; i < size / 2; i++) {
+        temp = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size - i - 1] = temp;
     }
 }
+
 
 double calculateAverage(int* arr, int size) {
     int sum = 0;
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; i++) {
         sum += arr[i];
     }
     return (double)sum / size;
 }
 
 int main() {
-    vector<int> numbers;
-    int num;
+    int arr[100], size;
 
-    while (cin >> num && num != -1) {
-        numbers.push_back(num);
+
+ 
+    size = 0;
+    while (true) {
+        cin >> arr[size];
+        if (arr[size] == -1) break;
+        size++;
     }
+    int max = findMax(arr, size);
+    cout << "Maximum value: " << max << endl;
 
-    int* arr = &numbers[0];  
-    int size = numbers.size();
-
-    cout << "Maximum value: " << findMax(arr, size) << endl;
-
+   
+    
+    size = 0;
+    while (true) {
+        cin >> arr[size];
+        if (arr[size] == -1) break;
+        size++;
+    }
     reverseArray(arr, size);
     cout << "Reversed array: ";
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
 
-    cout << "Average: " << calculateAverage(arr, size) << endl;
+   
+    
+    size = 0;
+    while (true) {
+        cin >> arr[size];
+        if (arr[size] == -1) break;
+        size++;
+    }
+    double avg = calculateAverage(arr, size);
+    cout << "Average: " << avg << endl;
 
     return 0;
 }
