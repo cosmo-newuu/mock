@@ -1,22 +1,21 @@
 #include <iostream>
 using namespace std;
+
 int main() {
     int n;
     cin >> n;
     bool pr = true;
-    for (int i = 2; i < n; i++) {
-        if (n%i == 0) {
+    if (n <= 1) pr = false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
             pr = false;
             break;
-        }else {
-            pr = true;
         }
-
     }
     if (pr) {
         cout << "Prime" << endl;
-
-    }else {
+    } else {
         cout << "Not Prime" << endl;
     }
+    return 0;
 }
