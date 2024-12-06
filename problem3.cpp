@@ -25,7 +25,7 @@ double calculateAverage(int* arr, int size) {
     for (int i = 0; i < size; ++i) {
         sum += arr[i];
     }
-    return static_cast<double>(sum) / size;
+    return (double)sum / size;
 }
 
 int main() {
@@ -36,7 +36,7 @@ int main() {
         numbers.push_back(num);
     }
 
-    int* arr = &numbers[0];
+    int* arr = &numbers[0];  
     int size = numbers.size();
 
     cout << "Maximum value: " << findMax(arr, size) << endl;
