@@ -1,10 +1,11 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 
-int findMax(int* arr, int size) {
+int findMax(const vector<int>& arr) {
     int max = arr[0];
-    for (int i = 1; i < size; i++) {
+    for (size_t i = 1; i < arr.size(); i++) {
         if (arr[i] > max) {
             max = arr[i];
         }
@@ -12,64 +13,69 @@ int findMax(int* arr, int size) {
     return max;
 }
 
-// Function to reverse the array in place
-void reverseArray(int* arr, int size) {
-    int temp;
-    for (int i = 0; i < size / 2; i++) {
-        temp = arr[i];
-        arr[i] = arr[size - i - 1];
-        arr[size - i - 1] = temp;
+void reverseArray(vector<int>& arr) {
+    for (size_t i = 0; i < arr.size() / 2; i++) {
+        swap(arr[i], arr[arr.size() - i - 1]);
     }
 }
 
 
-double calculateAverage(int* arr, int size) {
+double calculateAverage(const vector<int>& arr) {
     int sum = 0;
-    for (int i = 0; i < size; i++) {
-        sum += arr[i];
+    for (int num : arr) {
+        sum += num;
     }
-    return (double)sum / size;
+    return sum / (double)arr.size();
 }
 
 int main() {
-    int arr[100], size;
+    vector<int> arr;
+    int num;
 
-
- 
-    size = 0;
-    while (true) {
-        cin >> arr[size];
-        if (arr[size] == -1) break;
-        size++;
-    }
-    int max = findMax(arr, size);
-    cout << "Maximum value: " << max << endl;
-
-   
     
-    size = 0;
-    while (true) {
-        cin >> arr[size];
-        if (arr[size] == -1) break;
-        size++;
+    while (cin >> num && num != -1) {
+        arr.push_back(num);
     }
-    reverseArray(arr, size);
-    cout << "Reversed array: ";
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 
-   
-    
-    size = 0;
-    while (true) {
-        cin >> arr[size];
-        if (arr[size] == -1) break;
-        size++;
+
+    if (!arr.empty()) {
+        cout << "Maximum value: " << findMax(arr) << endl;
+    } else {
+        cout << "No elements entered." << endl;
     }
-    double avg = calculateAverage(arr, size);
-    cout << "Average: " << avg << endl;
+
+
+    arr.clear();
+
+    while (cin >> num && num != -1) {
+        arr.push_back(num);
+    }
+
+
+    if (!arr.empty()) {
+        reverseArray(arr);
+        cout << "Reversed array: ";
+        for (int val : arr) {
+            cout << val << " ";
+        }
+        cout << endl;
+    } else {
+        cout << "No elements entered." << endl;
+    }
+
+
+    arr.clear();
+
+    while (cin >> num && num != -1) {
+        arr.push_back(num);
+    }
+
+
+    if (!arr.empty()) {
+        cout << "Average: " << calculateAverage(arr) << endl;
+    } else {
+        cout << "No elements entered." << endl;
+    }
 
     return 0;
 }
